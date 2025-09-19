@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Match - Alumni Student Connect</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #eef2f5; padding: 20px; }
+        h2 { text-align: center; margin-bottom: 25px; }
+        .profile-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .profile-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #bbb;
+            padding: 15px;
+            width: 220px;
+            text-align: center;
+        }
+        .profile-card h3 { margin: 0 0 8px; }
+        .profile-card p { margin: 5px 0; color: #555; }
+        button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 14px;
+        }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h2>Suggested Matches</h2>
+    <div class="profile-list" id="profileList">
+        <!-- Profiles will be rendered here by JavaScript -->
+    </div>
+
+    <script>
+        // Sample data for demo
+        const profiles = [
+            { name: "Alice Johnson", role: "Alumni", skills: "Java, Python", location: "New York" },
+            { name: "Bob Smith", role: "Student", skills: "React, CSS", location: "California" },
+            { name: "Carol Lee", role: "Alumni", skills: "Marketing, SEO", location: "Texas" },
+            { name: "David Kim", role: "Student", skills: "Data Science, R", location: "Florida" }
+        ];
+
+        function connect(index) {
+            alert("Connection request sent to " + profiles[index].name);
+        }
+
+        function renderProfiles() {
+            const container = document.getElementById("profileList");
+            profiles.forEach((profile, index) => {
+                const card = document.createElement("div");
+                card.className = "profile-card";
+                card.innerHTML = `
+                    <h3>${profile.name}</h3>
+                    <p><b>Role:</b> ${profile.role}</p>
+                    <p><b>Skills:</b> ${profile.skills}</p>
+                    <p><b>Location:</b> ${profile.location}</p>
+                    <button onclick="connect(${index})">Connect</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        renderProfiles();
+    </script>
+</body>
+</html>
