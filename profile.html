@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Profile - Alumni Student Connect</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #eef2f5; display:flex; justify-content:center; align-items:center; height:100vh; }
+        .profile-container { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 12px #ccc; width: 400px; }
+        h2 { text-align: center; }
+        .form-group { margin: 15px 0; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select, textarea {
+            width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #bbb; box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff; color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; width: 100%;
+            font-size: 16px;
+        }
+        button:hover { background-color: #0056b3; }
+        .message { margin-top: 15px; text-align: center; color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h2>Complete Your Profile</h2>
+        <form id="profileForm">
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" required>
+                    <option value="">Select Role</option>
+                    <option value="Student">Student</option>
+                    <option value="Alumni">Alumni</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="skills">Skills</label>
+                <textarea id="skills" placeholder="Enter your skills (comma separated)" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Info</label>
+                <input type="text" id="contact" placeholder="Your phone or email" required />
+            </div>
+            <button type="submit">Save Profile</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        document.getElementById("profileForm").addEventListener("submit", function(e){
+            e.preventDefault();
+            const role = document.getElementById("role").value;
+            const skills = document.getElementById("skills").value.trim();
+            const contact = document.getElementById("contact").value.trim();
+
+            if(!role || !skills || !contact){
+                alert("Please fill all fields");
+                return;
+            }
+
+            // Simulate saving profile
+            document.getElementById("message").textContent = "Profile saved successfully as " + role + "!";
+            this.reset();
+        });
+    </script>
+</body>
+</html>
